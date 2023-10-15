@@ -2,25 +2,19 @@
 {
     internal class Program
     {
-        //task 9.2.3
+        //task 9.3.2
         static void Main(string[] args)
         {
-            try
-            {
-                Console.WriteLine("Блок try");
+            DiffDelegate diffDelegate = Diff;
 
-                throw new RankException("Исключение типа RankException");
-            }
+            Console.WriteLine(diffDelegate.Invoke(5, 3));
 
-            catch (Exception ex) when (ex is RankException)
-            {
-                Console.WriteLine(ex.GetType().ToString());
-            }
+        }
 
-            finally 
-            {
-                Console.WriteLine("Блок finally");
-            }
+        public delegate int DiffDelegate(int a, int b);
+        static int Diff(int a, int b)
+        {
+            return a - b;
         }
     }
 }
