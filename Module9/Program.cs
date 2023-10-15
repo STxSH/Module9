@@ -2,30 +2,42 @@
 {
     internal class Program
     {
-        //task 9.3.5
+        //task 9.3.7
 
-        public delegate void MultiDelegate(int a, int b);
+        delegate void ShowMessageDelegate();
+        delegate int SumDelegate(int a, int b, int c);
+        delegate bool CheckLengthDelegate(string _row);
+
         static void Main(string[] args)
         {
-            MultiDelegate mDelegate = Diff;
-            mDelegate += Summ;
+            ShowMessageDelegate showMessageDelegate = ShowMessage;
+            showMessageDelegate.Invoke();
 
-            mDelegate(5, 3);
+            SumDelegate sumDelegate = Sum;
+            int result = sumDelegate.Invoke(1, 30, 120);
+            Console.WriteLine(result);
 
-            mDelegate -= Summ;
-
-            mDelegate(1, 5);
+            CheckLengthDelegate checkLengthDelegate = CheckLength;
+            bool status = checkLengthDelegate.Invoke("skill_factory");
+            Console.WriteLine(status);
 
         }
 
-        static void Diff(int a, int b)
+        static void ShowMessage()
         {
-            Console.WriteLine(a - b); 
+            Console.WriteLine("Hello World!");
         }
 
-        static void Summ(int a, int b)
+        static int Sum(int a, int b, int c)
         {
-            Console.WriteLine(a + b);
+            return a + b + c;
         }
+
+        static bool CheckLength(string _row)
+        {
+            if (_row.Length > 3) return true;
+            return false;
+        }
+
     }
 }
