@@ -2,13 +2,25 @@
 {
     internal class Program
     {
+        //task 9.2.2
         static void Main(string[] args)
         {
-            Exception exception = new Exception();
+            try
+            {
+                Console.WriteLine("Блок try");
 
-            exception.Data.Add("Дата создания исключения: ", DateTime.Now);
+                throw new ArgumentOutOfRangeException();
+            }
 
-            Console.ReadKey();
+            catch (Exception ex) when (ex is ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Аргумент не соответствует допустимому диапазону значений");
+            }
+
+            finally 
+            {
+                Console.WriteLine("Блок finally");
+            }
         }
     }
 }
