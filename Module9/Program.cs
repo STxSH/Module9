@@ -2,12 +2,14 @@
 {
     internal class Program
     {
-        //task 9.3.2
+        //task 9.3.3
         static void Main(string[] args)
         {
             DiffDelegate diffDelegate = Diff;
 
             Console.WriteLine(diffDelegate.Invoke(5, 3));
+
+            Console.WriteLine(diffDelegate(5,3));
 
         }
 
