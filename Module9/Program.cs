@@ -2,21 +2,26 @@
 {
     internal class Program
     {
-        //task 9.3.3
+        //task 9.3.4
+
+        public delegate void MultiDelegate(int a, int b);
         static void Main(string[] args)
         {
-            DiffDelegate diffDelegate = Diff;
+            MultiDelegate mDelegate = Diff;
+            mDelegate += Summ;
 
-            Console.WriteLine(diffDelegate.Invoke(5, 3));
-
-            Console.WriteLine(diffDelegate(5,3));
+            mDelegate(5, 3);
 
         }
 
-        public delegate int DiffDelegate(int a, int b);
-        static int Diff(int a, int b)
+        static void Diff(int a, int b)
         {
-            return a - b;
+            Console.WriteLine(a - b); 
+        }
+
+        static void Summ(int a, int b)
+        {
+            Console.WriteLine(a + b);
         }
     }
 }
