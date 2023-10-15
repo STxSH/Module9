@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        //task 9.3.4
+        //task 9.3.5
 
         public delegate void MultiDelegate(int a, int b);
         static void Main(string[] args)
@@ -11,6 +11,10 @@
             mDelegate += Summ;
 
             mDelegate(5, 3);
+
+            mDelegate -= Summ;
+
+            mDelegate(1, 5);
 
         }
 
