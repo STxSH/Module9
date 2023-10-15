@@ -2,17 +2,15 @@
 {
     internal class Program
     {
-        //task 9.3.13
+        //task 9.3.14
 
-        delegate int RandomNumberDelegate();
+        delegate void ShowMessageDelegate(string _message);
         static void Main(string[] args)
         {
-            RandomNumberDelegate randomNumberDelegate = delegate ()
-            {
-                return new Random().Next(0, 100);
-            };
-            int result = randomNumberDelegate.Invoke();
-            Console.WriteLine(result);
+            ShowMessageDelegate showMessageDelegate = (string _message) => Console.WriteLine(_message);
+            
+
+            showMessageDelegate.Invoke("Hello World!");
             Console.Read();
         }
     }
