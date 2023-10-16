@@ -2,32 +2,28 @@
 {
     internal class Program
     {
-        //task 9.4.2
+        //task 9.4.3
 
-        public delegate Car Handler();
+        public delegate void info(Child ch);
 
-        public static Car CarHandler()
-        {
-            return null;
-        }
-
-        public static Lexus LexusHandler()
-        {
-            return null;
-        }
 
         static void Main(string[] args)
         {
-            Handler carHandler = CarHandler;
+            info chInfo = GetParentInfo;
 
-            Handler lexusHandler = LexusHandler;
+            chInfo.Invoke(new Child());
 
 
             Console.Read();
         }
-    }
 
-    class Car { }
+        public static void GetParentInfo(Parent p)
+        {
+            Console.WriteLine(p);
+        }
+    }       
 
-    class Lexus : Car { }
+    class Parent { }
+
+    class Child : Parent { }
 }
