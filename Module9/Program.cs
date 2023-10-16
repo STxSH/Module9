@@ -2,15 +2,32 @@
 {
     internal class Program
     {
-        //task 9.3.15
+        //task 9.4.2
 
-        delegate int RandomNumberDelegate();
+        public delegate Car Handler();
+
+        public static Car CarHandler()
+        {
+            return null;
+        }
+
+        public static Lexus LexusHandler()
+        {
+            return null;
+        }
+
         static void Main(string[] args)
         {
-            RandomNumberDelegate randomNumberDelegate = () => new Random().Next(0, 100);
-            int result = randomNumberDelegate.Invoke();
-            Console.WriteLine(result);
+            Handler carHandler = CarHandler;
+
+            Handler lexusHandler = LexusHandler;
+
+
             Console.Read();
         }
     }
+
+    class Car { }
+
+    class Lexus : Car { }
 }
